@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Proposta — Eliana Moura Estúdio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-box-sizing:border-box}
+:root{
+  --clr-bg:#faf9f7;
+  --clr-surface:#ffffff;
+  --clr-primary:#1a1a2e;
+  --clr-accent:#c9a96e;
+  --clr-accent-light:#e8d5b0;
+  --clr-accent-dark:#a8863f;
+  --clr-text:#3a3a4a;
+  --clr-text-light:#6b6b7b;
+  --clr-border:#e8e6e1;
+  --clr-red:#c0392b;
+  --clr-green:#27ae60;
+  --clr-blue:#2980b9;
+  --clr-purple:#8e44ad;
+  --clr-orange:#e67e22;
+  --radius:12px;
+  --shadow-sm:0 1px 3px rgba(0,0,0,.06);
+  --shadow-md:0 4px 20px rgba(0,0,0,.08);
+  --shadow-lg:0 8px 40px rgba(0,0,0,.1);
+  --font-sans:'Inter',system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+  --font-serif:'Playfair Display',Georgia,serif;
+  --safe-top:env(safe-area-inset-top,0px);
+  --safe-right:env(safe-area-inset-right,0px);
+  --safe-bottom:env(safe-area-inset-bottom,0px);
+  --safe-left:env(safe-area-inset-left,0px);
+}
+html{scroll-behavior:smooth;font-size:16px;-webkit-text-size-adjust:100%}
+body{font-family:var(--font-sans);color:var(--clr-text);background:var(--clr-bg);line-height:1.7;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-webkit-tap-highlight-color:transparent}
+
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:calc(var(--safe-top) + 1rem) calc(var(--safe-right) + 2rem) 1rem calc(var(--safe-left) + 2rem);-webkit-transition:all .4s ease;transition:all .4s ease}
+.nav.scrolled{background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);box-shadow:var(--shadow-sm)}
+.nav-inner{max-width:1200px;margin:0 auto;display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;-webkit-justify-content:space-between;justify-content:space-between}
+.nav-brand{font-family:var(--font-serif);font-size:1.1rem;font-weight:600;color:var(--clr-primary);text-decoration:none;letter-spacing:-.02em}
+.nav-links{display:-webkit-flex;display:flex;gap:1.5rem;list-style:none}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--clr-text-light);text-decoration:none;text-transform:uppercase;letter-spacing:.08em;-webkit-transition:color .3s;transition:color .3s}
+.nav-links a:hover{color:var(--clr-accent-dark)}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:.5rem}
+.nav-toggle span{display:block;width:22px;height:2px;background:var(--clr-primary);margin:5px 0;-webkit-transition:all .3s;transition:all .3s}
+
+/* ── HERO ── */
+.hero{min-height:100vh;min-height:100dvh;min-height:-webkit-fill-available;display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;position:relative;overflow:hidden;background-color:#1a1a2e;background-image:-webkit-linear-gradient(165deg,#1a1a2e 0%,#16213e 40%,#0f3460 100%);background-image:linear-gradient(165deg,#1a1a2e 0%,#16213e 40%,#0f3460 100%)}
+.hero::before{content:'';position:absolute;top:-50%;right:-30%;width:80%;height:200%;background:radial-gradient(ellipse,rgba(201,169,110,.15) 0%,transparent 70%);pointer-events:none}
+.hero-content{position:relative;z-index:2;max-width:700px}
+.hero-badge{display:inline-block;padding:.45rem 1.2rem;border:1px solid rgba(201,169,110,.4);border-radius:100px;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--clr-accent-light);margin-bottom:2rem}
+.hero h1{font-family:var(--font-serif);font-size:clamp(2.2rem,5vw,3.8rem);font-weight:700;color:#fff;line-height:1.15;margin-bottom:1.2rem;letter-spacing:-.02em}
+.hero h1 span{color:var(--clr-accent)}
+.hero p{font-size:1.05rem;color:rgba(255,255,255,.65);line-height:1.8;margin-bottom:2.5rem;max-width:540px;margin-left:auto;margin-right:auto}
+.hero-cta{display:-webkit-inline-flex;display:inline-flex;-webkit-align-items:center;align-items:center;gap:.6rem;padding:.9rem 2rem;background:var(--clr-accent);color:#fff;text-decoration:none;border-radius:100px;font-size:.85rem;font-weight:600;letter-spacing:.03em;-webkit-transition:all .3s ease;transition:all .3s ease;box-shadow:0 4px 20px rgba(201,169,110,.3)}
+.hero-cta:hover{background:var(--clr-accent-dark);-webkit-transform:translateY(-2px);transform:translateY(-2px);box-shadow:0 6px 30px rgba(201,169,110,.4)}
+.hero-cta svg{width:16px;height:16px}
+.hero-scroll{position:absolute;bottom:2.5rem;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;gap:.5rem;color:rgba(255,255,255,.35);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase}
+.hero-scroll .line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,.3),transparent)}
+
+/* ── SECTIONS ── */
+.section{padding:5rem 2rem}
+.section-alt{background:var(--clr-surface)}
+.container{max-width:900px;margin:0 auto}
+
+.section-label{display:-webkit-inline-flex;display:inline-flex;-webkit-align-items:center;align-items:center;gap:.5rem;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--clr-accent-dark);margin-bottom:1rem}
+.section-label .dot{width:6px;height:6px;border-radius:50%;background:var(--clr-accent)}
+.section-title{font-family:var(--font-serif);font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;color:var(--clr-primary);line-height:1.2;margin-bottom:1rem;letter-spacing:-.02em}
+.section-subtitle{font-size:1.05rem;color:var(--clr-text-light);line-height:1.8;margin-bottom:2.5rem;max-width:650px}
+
+/* ── INTRO GREETING ── */
+.greeting{padding:4rem 2rem 2rem;text-align:center}
+.greeting p{font-size:1.1rem;color:var(--clr-text);line-height:1.9;max-width:700px;margin:0 auto}
+.greeting p strong{color:var(--clr-primary)}
+
+/* ── ECOSYSTEM CARDS ── */
+.eco-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:2rem}
+.eco-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius);padding:1.5rem;-webkit-transition:all .3s ease;transition:all .3s ease}
+.eco-card:hover{border-color:var(--clr-accent-light);box-shadow:var(--shadow-md);-webkit-transform:translateY(-3px);transform:translateY(-3px)}
+.eco-icon{width:42px;height:42px;border-radius:10px;display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;font-size:1.2rem;margin-bottom:1rem}
+.eco-card h4{font-size:.95rem;font-weight:700;color:var(--clr-primary);margin-bottom:.35rem}
+.eco-card p{font-size:.82rem;color:var(--clr-text-light);line-height:1.6}
+.eco-card:nth-child(1) .eco-icon{background:#eaf2fe;color:#2980b9}
+.eco-card:nth-child(2) .eco-icon{background:#fdf2e9;color:#e67e22}
+.eco-card:nth-child(3) .eco-icon{background:#eafaf1;color:#27ae60}
+.eco-card:nth-child(4) .eco-icon{background:#f4ecf7;color:#8e44ad}
+.eco-card:nth-child(5) .eco-icon{background:#fdedec;color:#c0392b}
+
+.callout{margin-top:2rem;padding:1.2rem 1.5rem;background:linear-gradient(135deg,rgba(201,169,110,.08),rgba(201,169,110,.03));border-left:3px solid var(--clr-accent);border-radius:0 var(--radius) var(--radius) 0;font-size:.9rem;color:var(--clr-text);line-height:1.7}
+.callout strong{color:var(--clr-primary)}
+
+/* ── PAIN POINTS ── */
+.pain-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius);padding:2rem;margin-bottom:1.2rem;-webkit-transition:all .3s ease;transition:all .3s ease;position:relative;overflow:hidden}
+.pain-card:hover{box-shadow:var(--shadow-md)}
+.pain-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px}
+.pain-card:nth-child(1)::before{background:var(--clr-red)}
+.pain-card:nth-child(2)::before{background:var(--clr-orange)}
+.pain-card:nth-child(3)::before{background:var(--clr-purple)}
+.pain-badge{display:inline-block;padding:.25rem .7rem;border-radius:100px;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.8rem}
+.pain-card:nth-child(1) .pain-badge{background:#fdedec;color:var(--clr-red)}
+.pain-card:nth-child(2) .pain-badge{background:#fdf2e9;color:var(--clr-orange)}
+.pain-card:nth-child(3) .pain-badge{background:#f4ecf7;color:var(--clr-purple)}
+.pain-card h3{font-size:1.1rem;font-weight:700;color:var(--clr-primary);margin-bottom:.8rem}
+.pain-list{list-style:none;margin-bottom:1rem}
+.pain-list li{position:relative;padding-left:1.4rem;font-size:.88rem;color:var(--clr-text);line-height:1.7;margin-bottom:.3rem}
+.pain-list li::before{content:'';position:absolute;left:0;top:.55rem;width:6px;height:6px;border-radius:50%;background:var(--clr-border)}
+.pain-insight{font-size:.85rem;color:var(--clr-accent-dark);font-weight:500;padding-top:.5rem;border-top:1px solid var(--clr-border)}
+
+/* ── OPPORTUNITY ── */
+.opp-features{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:1.5rem}
+.opp-feature{display:-webkit-flex;display:flex;-webkit-align-items:flex-start;align-items:flex-start;gap:.8rem;padding:1rem;background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius)}
+.opp-check{width:24px;height:24px;min-width:24px;border-radius:50%;background:linear-gradient(135deg,var(--clr-accent),var(--clr-accent-dark));display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;margin-top:.1rem}
+.opp-check svg{width:12px;height:12px;color:#fff}
+.opp-feature span{font-size:.88rem;font-weight:500;color:var(--clr-primary);line-height:1.5}
+
+/* ── PHASES / TIMELINE ── */
+.timeline{position:relative;padding-left:2.5rem;margin-top:2rem}
+.timeline::before{content:'';position:absolute;left:15px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--clr-accent),var(--clr-border))}
+.phase{position:relative;margin-bottom:2.5rem}
+.phase:last-child{margin-bottom:0}
+.phase-dot{position:absolute;left:-2.5rem;top:.3rem;width:32px;height:32px;border-radius:50%;display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;font-size:.75rem;font-weight:800;color:#fff;z-index:2}
+.phase:nth-child(1) .phase-dot{background:linear-gradient(135deg,#c0392b,#e74c3c)}
+.phase:nth-child(2) .phase-dot{background:linear-gradient(135deg,#2980b9,#3498db)}
+.phase:nth-child(3) .phase-dot{background:linear-gradient(135deg,#27ae60,#2ecc71)}
+.phase-content{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius);padding:2rem;-webkit-transition:all .3s ease;transition:all .3s ease}
+.phase-content:hover{box-shadow:var(--shadow-md)}
+.phase-tag{display:inline-block;padding:.25rem .7rem;border-radius:100px;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.6rem}
+.phase:nth-child(1) .phase-tag{background:#fdedec;color:var(--clr-red)}
+.phase:nth-child(2) .phase-tag{background:#eaf2fe;color:var(--clr-blue)}
+.phase:nth-child(3) .phase-tag{background:#eafaf1;color:var(--clr-green)}
+.phase h3{font-size:1.15rem;font-weight:700;color:var(--clr-primary);margin-bottom:.3rem}
+.phase-obj{font-size:.82rem;color:var(--clr-text-light);margin-bottom:1rem;font-style:italic}
+.phase-items{list-style:none;margin-bottom:1rem}
+.phase-items li{position:relative;padding-left:1.4rem;font-size:.88rem;color:var(--clr-text);line-height:1.7;margin-bottom:.25rem}
+.phase-items li::before{content:'';position:absolute;left:0;top:.6rem;width:5px;height:5px;border-radius:50%;background:var(--clr-accent)}
+.phase-result{padding:.8rem 1rem;background:linear-gradient(135deg,rgba(201,169,110,.06),rgba(201,169,110,.02));border-radius:8px;font-size:.84rem;color:var(--clr-text);line-height:1.6}
+.phase-result strong{color:var(--clr-accent-dark)}
+
+/* ── TECH / INFRA ── */
+.info-cards{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:1.5rem}
+.info-card{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius);padding:1.8rem;-webkit-transition:all .3s ease;transition:all .3s ease}
+.info-card:hover{box-shadow:var(--shadow-md)}
+.info-card-icon{width:44px;height:44px;border-radius:10px;display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;font-size:1.3rem;margin-bottom:1rem}
+.info-card:nth-child(1) .info-card-icon{background:#eaf2fe}
+.info-card:nth-child(2) .info-card-icon{background:#f4ecf7}
+.info-card h3{font-size:1rem;font-weight:700;color:var(--clr-primary);margin-bottom:.8rem}
+.info-list{list-style:none}
+.info-list li{position:relative;padding-left:1.2rem;font-size:.85rem;color:var(--clr-text);line-height:1.7;margin-bottom:.2rem}
+.info-list li::before{content:'';position:absolute;left:0;top:.6rem;width:5px;height:5px;border-radius:50%;background:var(--clr-accent)}
+
+.cloud-note{margin-top:1.5rem;padding:1.2rem 1.5rem;background:rgba(41,128,185,.06);border:1px solid rgba(41,128,185,.15);border-radius:var(--radius);font-size:.85rem;color:var(--clr-text);line-height:1.7}
+.cloud-note strong{color:var(--clr-blue)}
+
+/* ── WORK MODEL ── */
+.model-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-top:1.5rem}
+.model-item{text-align:center;padding:1.5rem 1rem;background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius);-webkit-transition:all .3s ease;transition:all .3s ease}
+.model-item:hover{border-color:var(--clr-accent-light);box-shadow:var(--shadow-md)}
+.model-icon{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,rgba(201,169,110,.12),rgba(201,169,110,.04));display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;margin:0 auto .8rem;font-size:1.2rem}
+.model-item h4{font-size:.85rem;font-weight:700;color:var(--clr-primary);margin-bottom:.3rem}
+.model-item p{font-size:.78rem;color:var(--clr-text-light);line-height:1.5}
+
+/* ── ALIGNMENT BANNER ── */
+.banner{padding:4rem 2rem;background-color:#1a1a2e;background-image:-webkit-linear-gradient(165deg,#1a1a2e 0%,#16213e 100%);background-image:linear-gradient(165deg,#1a1a2e 0%,#16213e 100%);text-align:center}
+.banner-inner{max-width:650px;margin:0 auto}
+.banner .section-label{color:var(--clr-accent-light)}
+.banner .section-label .dot{background:var(--clr-accent-light)}
+.banner h2{font-family:var(--font-serif);font-size:clamp(1.4rem,3vw,2rem);color:#fff;margin-bottom:1rem;line-height:1.3}
+.banner p{font-size:1rem;color:rgba(255,255,255,.6);line-height:1.8}
+.banner p strong{color:var(--clr-accent-light)}
+
+/* ── NEXT STEPS ── */
+.steps{counter-reset:step;margin-top:2rem}
+.step-item{display:-webkit-flex;display:flex;gap:1.5rem;margin-bottom:1.5rem;-webkit-align-items:flex-start;align-items:flex-start}
+.step-num{counter-increment:step;width:48px;height:48px;min-width:48px;border-radius:50%;background:var(--clr-surface);border:2px solid var(--clr-accent);display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;font-size:1rem;font-weight:800;color:var(--clr-accent-dark)}
+.step-body{background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius);padding:1.5rem;-webkit-flex:1;flex:1;-webkit-transition:all .3s ease;transition:all .3s ease}
+.step-body:hover{box-shadow:var(--shadow-md)}
+.step-body h3{font-size:1rem;font-weight:700;color:var(--clr-primary);margin-bottom:.5rem}
+.step-body p{font-size:.85rem;color:var(--clr-text-light);line-height:1.7}
+
+/* ── FOOTER ── */
+.footer{padding:3rem 2rem calc(var(--safe-bottom) + 3rem);text-align:center;border-top:1px solid var(--clr-border)}
+.footer p{font-size:.8rem;color:var(--clr-text-light)}
+.footer .brand{font-family:var(--font-serif);font-weight:600;color:var(--clr-primary)}
+
+/* ── ANIMATIONS ──
+   Conteúdo sempre visível: esconder .reveal com opacity:0 quebrava a página quando
+   o JS não executava (Quick Look, restrições) ou o IntersectionObserver não disparava. */
+.reveal{opacity:1;-webkit-transform:none;transform:none}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--clr-surface);-webkit-flex-direction:column;flex-direction:column;padding:1.5rem calc(var(--safe-left) + 2rem) 1.5rem calc(var(--safe-right) + 2rem);box-shadow:var(--shadow-md);gap:1rem}
+  .nav-links.open{display:-webkit-flex;display:flex}
+  .nav-toggle{display:block}
+  .info-cards{grid-template-columns:1fr}
+  .section{padding:3.5rem calc(var(--safe-left) + 1.2rem) 3.5rem calc(var(--safe-right) + 1.2rem)}
+  .hero{min-height:100vh;min-height:100dvh;min-height:-webkit-fill-available;padding:5rem calc(var(--safe-right) + 1.2rem) 3rem calc(var(--safe-left) + 1.2rem)}
+  .timeline{padding-left:2rem}
+  .timeline::before{left:12px}
+  .phase-dot{left:-2rem;width:26px;height:26px;font-size:.65rem}
+  .step-item{-webkit-flex-direction:column;flex-direction:column;gap:.8rem}
+  .step-num{width:40px;height:40px;min-width:40px;font-size:.9rem}
+}
+
+/* ── iOS / Safari specific ── */
+@supports(-webkit-touch-callout:none){
+  .hero{min-height:-webkit-fill-available}
+  body{-webkit-overflow-scrolling:touch}
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--clr-bg)}
+::-webkit-scrollbar-thumb{background:var(--clr-accent-light);border-radius:3px}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">Eliana Moura Estúdio</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#visao">Visão</a></li>
+      <li><a href="#dores">Diagnóstico</a></li>
+      <li><a href="#oportunidade">Oportunidade</a></li>
+      <li><a href="#fases">Roadmap</a></li>
+      <li><a href="#proximos">Próximos Passos</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content reveal">
+    <div class="hero-badge">Versão para Validação</div>
+    <h1>Documento de <span>Entendimento</span> do Projeto</h1>
+    <p>Consolidei o entendimento inicial do cenário, necessidades e oportunidades identificadas — garantindo 100% de alinhamento antes de avançar.</p>
+    <a href="#visao" class="hero-cta">
+      Explorar Proposta
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17l9.2-9.2M7 7h10v10"/></svg>
+    </a>
+  </div>
+  <div class="hero-scroll">
+    <div class="line"></div>
+    scroll
+  </div>
+</section>
+
+<!-- GREETING -->
+<div class="greeting section-alt">
+  <div class="container reveal">
+    <p>Olá, pessoal! Tudo bem?<br><br>Conforme nossa conversa, consolidei abaixo o entendimento inicial do cenário, das necessidades e das oportunidades que identifiquei para o projeto.<br><br><strong>A ideia aqui é garantir que estamos 100% alinhados antes de avançarmos para a proposta técnica e comercial.</strong></p>
+  </div>
+</div>
+
+<!-- 1. VISÃO GERAL -->
+<section class="section" id="visao">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label"><span class="dot"></span> Seção 01</div>
+      <h2 class="section-title">Visão Geral</h2>
+      <p class="section-subtitle">O que vocês estão construindo hoje vai muito além de uma operação de cursos ou serviços. Vocês já possuem, na prática, <strong>um ecossistema completo de marca</strong>, com forte potencial de se consolidar como uma plataforma referência no mercado de profissionais do texto.</p>
+    </div>
+    <div class="eco-grid reveal">
+      <div class="eco-card">
+        <div class="eco-icon">🎯</div>
+        <h4>Vagas de Revisão</h4>
+        <p>Comunidade e aquisição de novos profissionais</p>
+      </div>
+      <div class="eco-card">
+        <div class="eco-icon">📰</div>
+        <h4>Rodapé</h4>
+        <p>Eventos e construção de autoridade</p>
+      </div>
+      <div class="eco-card">
+        <div class="eco-icon">✏️</div>
+        <h4>Estúdio Editorial</h4>
+        <p>Serviços e monetização direta</p>
+      </div>
+      <div class="eco-card">
+        <div class="eco-icon">🎓</div>
+        <h4>Escola</h4>
+        <p>Formação e escala do negócio</p>
+      </div>
+      <div class="eco-card">
+        <div class="eco-icon">📚</div>
+        <h4>Editora</h4>
+        <p>Expansão do portfólio de produtos</p>
+      </div>
+    </div>
+    <div class="callout reveal">
+      <strong>O principal ponto é:</strong> Esse valor já existe — mas ainda não está organizado, estruturado e potencializado digitalmente.
+    </div>
+  </div>
+</section>
+
+<!-- 2. PONTOS DE DOR -->
+<section class="section section-alt" id="dores">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label"><span class="dot"></span> Seção 02</div>
+      <h2 class="section-title">Principais Pontos de Dor</h2>
+      <p class="section-subtitle">Durante a conversa, alguns pontos ficaram muito claros e críticos para o avanço do projeto.</p>
+    </div>
+
+    <div class="pain-card reveal">
+      <span class="pain-badge">Alto Impacto</span>
+      <h3>Experiência Atual dos Alunos</h3>
+      <ul class="pain-list">
+        <li>Instabilidade da plataforma atual (Sympla)</li>
+        <li>Falta de suporte adequado</li>
+        <li>Problemas de acesso aos cursos</li>
+      </ul>
+      <p class="pain-insight">Isso gera desgaste operacional e impacta diretamente a percepção da marca.</p>
+    </div>
+
+    <div class="pain-card reveal">
+      <span class="pain-badge">Estratégico</span>
+      <h3>Falta de um Hub Central da Marca</h3>
+      <ul class="pain-list">
+        <li>Não existe ambiente que apresente o ecossistema como um todo</li>
+        <li>Falta direcionamento claro para o usuário</li>
+        <li>Ausência de reforço de autoridade e posicionamento</li>
+      </ul>
+      <p class="pain-insight">Isso limita crescimento e percepção de valor.</p>
+    </div>
+
+    <div class="pain-card reveal">
+      <span class="pain-badge">Conversão</span>
+      <h3>Jornada do Aluno Não Estruturada</h3>
+      <ul class="pain-list">
+        <li>O aluno não sabe por onde começar</li>
+        <li>Não existe progressão clara de aprendizado</li>
+        <li>Cursos são consumidos de forma desorganizada</li>
+      </ul>
+      <p class="pain-insight">Oportunidade direta de aumento de conversão e retenção.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. OPORTUNIDADE -->
+<section class="section" id="oportunidade">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label"><span class="dot"></span> Seção 03</div>
+      <h2 class="section-title">Oportunidade Estratégica</h2>
+      <p class="section-subtitle">O que vejo como principal oportunidade não é apenas resolver problemas técnicos. <strong>É estruturar uma plataforma digital própria</strong> que transforme toda a operação.</p>
+    </div>
+    <div class="opp-features reveal">
+      <div class="opp-feature">
+        <div class="opp-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <span>Organize toda a operação</span>
+      </div>
+      <div class="opp-feature">
+        <div class="opp-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <span>Melhore a experiência do aluno</span>
+      </div>
+      <div class="opp-feature">
+        <div class="opp-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <span>Aumente conversão de vendas</span>
+      </div>
+      <div class="opp-feature">
+        <div class="opp-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <span>Fortaleça autoridade da marca</span>
+      </div>
+      <div class="opp-feature">
+        <div class="opp-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <span>Escale o negócio com consistência</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. FASES -->
+<section class="section section-alt" id="fases">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label"><span class="dot"></span> Seção 04</div>
+      <h2 class="section-title">Direcionamento Proposto</h2>
+      <p class="section-subtitle">Para garantir velocidade e resultado, a melhor abordagem é evoluir por etapas — uma visão evolutiva que entrega valor desde o primeiro dia.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="phase reveal">
+        <div class="phase-dot">1</div>
+        <div class="phase-content">
+          <span class="phase-tag">Prioridade Máxima</span>
+          <h3>Fase 1 — Estruturação</h3>
+          <p class="phase-obj">Colocar no ar um ambiente profissional, centralizado e confiável.</p>
+          <ul class="phase-items">
+            <li>Portal institucional da marca</li>
+            <li>Página da Escola (com todos os cursos organizados)</li>
+            <li>Integração com Hotmart (sem depender da experiência deles)</li>
+            <li>Página do Estúdio (serviços + clientes)</li>
+            <li>Estrutura clara de navegação entre todas as frentes</li>
+          </ul>
+          <div class="phase-result"><strong>Resultado esperado:</strong> Uma presença digital sólida, profissional e pronta para crescimento.</div>
+        </div>
+      </div>
+
+      <div class="phase reveal">
+        <div class="phase-dot">2</div>
+        <div class="phase-content">
+          <span class="phase-tag">Inteligência</span>
+          <h3>Fase 2 — Inteligência de Jornada</h3>
+          <p class="phase-obj">Melhorar experiência e aumentar vendas.</p>
+          <ul class="phase-items">
+            <li>Trilha de aprendizado personalizada</li>
+            <li>Questionário de direcionamento</li>
+            <li>Organização dos cursos por perfil (iniciante, intermediário, etc.)</li>
+          </ul>
+          <div class="phase-result"><strong>Resultado esperado:</strong> Transformar a experiência em algo realmente diferenciado no mercado.</div>
+        </div>
+      </div>
+
+      <div class="phase reveal">
+        <div class="phase-dot">3</div>
+        <div class="phase-content">
+          <span class="phase-tag">Diferenciação</span>
+          <h3>Fase 3 — Diferenciação e Escala</h3>
+          <p class="phase-obj">Posicionamento forte e retenção de alunos.</p>
+          <ul class="phase-items">
+            <li>Sistema de certificação própria</li>
+            <li>Elementos de gamificação</li>
+            <li>Comunidade integrada na plataforma</li>
+          </ul>
+          <div class="phase-result"><strong>Resultado esperado:</strong> Posicionar vocês como referência e criar um ecossistema mais fechado e valioso.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 & 6. TECH + INFRA -->
+<section class="section" id="tech">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label"><span class="dot"></span> Seção 05 &amp; 06</div>
+      <h2 class="section-title">Abordagem Técnica &amp; Infraestrutura</h2>
+      <p class="section-subtitle">A proposta segue uma linha moderna, flexível e preparada para crescer junto com o negócio — sem criar dependências ou limitações.</p>
+    </div>
+
+    <div class="info-cards reveal">
+      <div class="info-card">
+        <div class="info-card-icon">⚙️</div>
+        <h3>Abordagem Técnica</h3>
+        <ul class="info-list">
+          <li>Arquitetura escalável</li>
+          <li>Integração com ferramentas existentes (Hotmart)</li>
+          <li>Possibilidade de evolução para plataforma própria</li>
+          <li>Foco forte em experiência do usuário (UX)</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">☁️</div>
+        <h3>Infraestrutura Cloud</h3>
+        <ul class="info-list">
+          <li>Hospedagem da aplicação</li>
+          <li>Banco de dados</li>
+          <li>Armazenamento de arquivos</li>
+          <li>CDN e performance</li>
+          <li>Monitoramento e segurança</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cloud-note reveal">
+      <strong>Importante:</strong> Os custos relacionados à infraestrutura (cloud) não estão incluídos no desenvolvimento e serão de responsabilidade do cliente. Esses custos são recorrentes (mensais) e variam conforme o uso da plataforma. Durante a fase de proposta, será possível estimar uma faixa de investimento mensal e sugerir a melhor configuração custo-benefício.
+    </div>
+  </div>
+</section>
+
+<!-- 7. MODELO DE TRABALHO -->
+<section class="section section-alt" id="modelo">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label"><span class="dot"></span> Seção 07</div>
+      <h2 class="section-title">Modelo de Trabalho</h2>
+      <p class="section-subtitle">Faz mais sentido um modelo de parceria contínua — garantindo que a plataforma evolua junto com o negócio de vocês.</p>
+    </div>
+    <div class="model-grid reveal">
+      <div class="model-item">
+        <div class="model-icon">🛠️</div>
+        <h4>Desenvolvimento</h4>
+        <p>Construção completa da plataforma</p>
+      </div>
+      <div class="model-item">
+        <div class="model-icon">🤝</div>
+        <h4>Acompanhamento</h4>
+        <p>Proximidade e alinhamento constante</p>
+      </div>
+      <div class="model-item">
+        <div class="model-icon">📈</div>
+        <h4>Evoluções</h4>
+        <p>Melhorias contínuas e novas features</p>
+      </div>
+      <div class="model-item">
+        <div class="model-icon">🛡️</div>
+        <h4>Suporte Técnico</h4>
+        <p>Assistência após cada entrega</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. ALINHAMENTO -->
+<section class="banner">
+  <div class="banner-inner reveal">
+    <div class="section-label"><span class="dot"></span> Alinhamento Importante</div>
+    <h2>Esse projeto não é apenas um site ou uma página de cursos.</h2>
+    <p>Estamos falando da construção de um <strong>ativo digital estratégico</strong>, que pode se tornar o principal canal de crescimento e monetização de vocês.</p>
+  </div>
+</section>
+
+<!-- 9. PRÓXIMOS PASSOS -->
+<section class="section" id="proximos">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label"><span class="dot"></span> Seção 09</div>
+      <h2 class="section-title">Próximos Passos</h2>
+      <p class="section-subtitle">Se esse entendimento fizer sentido para vocês, seguimos com o plano abaixo.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step-item reveal">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Ajustes Finos e Validação do Escopo</h3>
+          <p>Alinhamento final do entendimento e confirmação de prioridades.</p>
+        </div>
+      </div>
+      <div class="step-item reveal">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Proposta Técnica e Comercial</h3>
+          <p>Definição de arquitetura, escopo detalhado, prazo estimado, investimento e sugestão inicial de infraestrutura (cloud).</p>
+        </div>
+      </div>
+      <div class="step-item reveal">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Planejamento Inicial de Execução</h3>
+          <p>Roadmap de entregas, definição de fases e organização do início do projeto.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p><span class="brand">Eliana Moura Estúdio</span> &mdash; Documento de Entendimento &middot; Versão para Validação</p>
+</footer>
+
+<script>
+(function(){
+  // Nav scroll effect — use passive listener for better iOS scroll perf
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function() {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  // Mobile menu
+  var toggle = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  toggle.addEventListener('click', function() { links.classList.toggle('open'); });
+  var navAnchors = links.querySelectorAll('a');
+  for (var i = 0; i < navAnchors.length; i++) {
+    navAnchors[i].addEventListener('click', function() { links.classList.remove('open'); });
+  }
+
+  // Smooth scroll polyfill for Safari < 15.4
+  if (!('scrollBehavior' in document.documentElement.style)) {
+    var anchors = document.querySelectorAll('a[href^="#"]');
+    for (var j = 0; j < anchors.length; j++) {
+      anchors[j].addEventListener('click', function(e) {
+        var href = this.getAttribute('href');
+        if (!href || href === '#') return;
+        var target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          var top = target.getBoundingClientRect().top + window.pageYOffset;
+          var start = window.pageYOffset;
+          var distance = top - start;
+          var duration = 600;
+          var startTime = null;
+          function step(ts) {
+            if (!startTime) startTime = ts;
+            var progress = Math.min((ts - startTime) / duration, 1);
+            var ease = progress < 0.5
+              ? 4 * progress * progress * progress
+              : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+            window.scrollTo(0, start + distance * ease);
+            if (progress < 1) window.requestAnimationFrame(step);
+          }
+          window.requestAnimationFrame(step);
+        }
+      });
+    }
+  }
+
+})();
+</script>
+</body>
+</html>
